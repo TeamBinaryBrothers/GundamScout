@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 app.get("/api", (req, res) => {
-  res.json({ fruits: ["apple", "mango", "banana"] });
+  res.json({ fruits: ["apple", "mango", "coconut"] });
 });
 
 app.listen(8080, () => {
