@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+.app {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  justify-items: center;
+  align-items: center;
+  padding: 20px;
+}

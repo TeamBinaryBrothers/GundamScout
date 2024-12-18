@@ -1,0 +1,12 @@
+.box {
+  width: 360px;
+  height: 200px;
+  background-color: lightgray;
+  border: 3px solid red;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  color: darkblue;
+  margin: 10px;
+}
