@@ -9,7 +9,7 @@ const App = () => {
 
   return (
     <>
-      <div>
+      {/* <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -28,7 +28,12 @@ const App = () => {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </p>
+      </p> */}
+      <div className="testButton">
+        <button>Wishlist</button>
+        <button>Collection</button>
+        <button>Login</button>
+      </div>
       <div className="app">
         <Box content="Box 1" />
         <Box content="Box 2" />
@@ -39,6 +44,9 @@ const App = () => {
         <Box content="Box 7" />
         <Box content="Box 8" />
         <Box content="Box 9" />
+        <Box content="Box 10" />
+        <Box content="Box 11" />
+        <Box content="Box 12" />
       </div>
     </>
   );
