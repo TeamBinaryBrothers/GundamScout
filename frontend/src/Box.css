@@ -1,12 +1,26 @@
 .box {
-  width: 360px;
-  height: 200px;
+  width: 341px;
+  height: 208px;
   background-color: lightgray;
   border: 3px solid darkblue;
   border-radius: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   font-family: Arial, sans-serif;
   color: darkblue;
   margin: 10px;
+  overflow: hidden;
+}
+
+.box-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.box-content {
+  margin-top: 10px;
+  text-align: center;
 }

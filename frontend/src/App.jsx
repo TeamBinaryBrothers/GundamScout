@@ -35,7 +35,7 @@ const App = () => {
         <button>Login</button>
       </div>
       <div className="app">
-        <Box content="Box 1" />
+        <Box image="https://static.wikia.nocookie.net/gunplabuilders/images/f/fa/RG-RX-78-2-Gundam-(2.0)-box.jpg" />
         <Box content="Box 2" />
         <Box content="Box 3" />
         <Box content="Box 4" />
