@@ -43,13 +43,32 @@
   color: #888;
 } */
 
-.testButton {
-  position: absolute;
-  top: 10px;
-  right: 100px;
-  z-index: 1000;
+.header {
   display: flex;
-  gap: 30px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 100px;
+}
+
+.searchBar {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.searchBar input {
+  padding: 10px;
+  font-size: 16px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.testButton {
+  display: flex;
+  gap: 15px;
+
+  transform: translateX(1125px);
 }
 
 .testButton button {
@@ -58,7 +77,7 @@
   cursor: pointer;
 }
 
-.app {
+.grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;

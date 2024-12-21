@@ -6,6 +6,12 @@ import Box from "./Box";
 
 const App = () => {
   const [count, setCount] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+    console.log("Searching for:", e.target.value); // Optional: Handle search logic
+  };
 
   return (
     <>
@@ -34,7 +40,15 @@ const App = () => {
         <button>Collection</button>
         <button>Login</button>
       </div>
-      <div className="app">
+      <div className="searchBar">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchQuery}
+          onChange={handleSearch}
+        />
+      </div>
+      <div className="grid">
         <Box image="https://static.wikia.nocookie.net/gunplabuilders/images/f/fa/RG-RX-78-2-Gundam-(2.0)-box.jpg" />
         <Box content="Box 2" />
         <Box content="Box 3" />
