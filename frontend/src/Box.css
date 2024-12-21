@@ -1,8 +1,8 @@
 .box {
-  width: 375px;
+  width: 380px;
   height: 600px;
   background-color: lightgray;
-  border: 3px solid lightblue;
+  border: 3px solid gray;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
   align-items: center;
   font-family: Arial, sans-serif;
   color: darkblue;
-  margin: 7px;
+  margin: 3px;
   overflow: hidden;
 }
 
