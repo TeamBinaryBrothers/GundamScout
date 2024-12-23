@@ -6,11 +6,19 @@ const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = () => {
-    console.log(`Searching for: ${searchQuery}`); // Optional: Handle search logic
+    console.log(`Searching for: ${searchQuery}`);
+  };
+
+  const handleFilter = () => {
+    console.log("Filter button clicked");
   };
 
   return (
     <>
+      <div className="filterButton">
+        <button onClick={handleFilter}>Filter</button>
+      </div>
+
       <div className="testButton">
         <button>Wishlist</button>
         <button>Collection</button>

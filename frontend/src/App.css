@@ -19,6 +19,20 @@
   border-radius: 4px;
 }
 
+.filterButton {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+
+  transform: translateX(25px);
+}
+
+.filterButton button {
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 .testButton {
   display: flex;
   gap: 15px;
