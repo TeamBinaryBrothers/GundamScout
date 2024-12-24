@@ -59,30 +59,32 @@ const App = () => {
 
     setLoading(true);
     setTimeout(() => {
-      const newBoxes = [
-        {
-          image: "https://via.placeholder.com/150",
-          content: `Box ${boxCounter + 1}`,
-        },
-        {
-          image: "https://via.placeholder.com/150",
-          content: `Box ${boxCounter + 2}`,
-        },
-        {
-          image: "https://via.placeholder.com/150",
-          content: `Box ${boxCounter + 3}`,
-        },
-        {
-          image: "https://via.placeholder.com/150",
-          content: `Box ${boxCounter + 4}`,
-        },
-      ];
+      setBoxes((prevBoxes) => {
+        const newBoxes = [
+          {
+            image: "https://via.placeholder.com/150",
+            content: `Box ${prevBoxes.length + 1}`,
+          },
+          {
+            image: "https://via.placeholder.com/150",
+            content: `Box ${prevBoxes.length + 2}`,
+          },
+          {
+            image: "https://via.placeholder.com/150",
+            content: `Box ${prevBoxes.length + 3}`,
+          },
+          {
+            image: "https://via.placeholder.com/150",
+            content: `Box ${prevBoxes.length + 4}`,
+          },
+        ];
 
-      setBoxes((prevBoxes) => [...prevBoxes, ...newBoxes]);
+        return [...prevBoxes, ...newBoxes];
+      });
 
       setBoxCounter((prevCounter) => prevCounter + 4);
 
-      if (boxCounter + 4 > 50) {
+      if (boxes.length + 4 > 50) {
         setHasMore(false);
       }
 
