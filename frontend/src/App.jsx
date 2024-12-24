@@ -6,27 +6,33 @@ const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [boxes, setBoxes] = useState([
     {
-      image: "https://static.wikia.nocookie.net/gunplabuilders/images/f/fa/RG-RX-78-2-Gundam-(2.0)-box.jpg",
+      image:
+        "https://static.wikia.nocookie.net/gunplabuilders/images/f/fa/RG-RX-78-2-Gundam-(2.0)-box.jpg",
       content: "RG 1/144 RX-78-2 Gundam [Ver. 2.0]",
     },
     {
-      image: "https://cdn.shopify.com/s/files/1/2786/5582/products/191_3419_s_to0m866o5x5p8duhwc8b2f6wjvxz_clipped_rev_1.png",
+      image:
+        "https://cdn.shopify.com/s/files/1/2786/5582/products/191_3419_s_to0m866o5x5p8duhwc8b2f6wjvxz_clipped_rev_1.png",
       content: "MG 1/100 ASW-G-08 Gundam Barbatos",
     },
     {
-      image: "https://static.wikia.nocookie.net/gunplabuilders/images/2/2e/MG-Gundam-NT-1-%28Ver.2.0%29-box.jpg",
+      image:
+        "https://static.wikia.nocookie.net/gunplabuilders/images/2/2e/MG-Gundam-NT-1-%28Ver.2.0%29-box.jpg",
       content: "MG 1/100 RX-78NT-1 Gundam NT-1 Alex Ver 2.0",
     },
     {
-      image: "https://static.wikia.nocookie.net/gunplabuilders/images/b/b7/PG-Unicorn-Gundam-box.jpg",
+      image:
+        "https://static.wikia.nocookie.net/gunplabuilders/images/b/b7/PG-Unicorn-Gundam-box.jpg",
       content: "PG 1/60 Unicorn Gundam",
     },
     {
-      image: "https://cdn.shopify.com/s/files/1/2786/5582/files/boxart_45828b86-66cc-4905-b463-906b778f84bf.jpg",
+      image:
+        "https://cdn.shopify.com/s/files/1/2786/5582/files/boxart_45828b86-66cc-4905-b463-906b778f84bf.jpg",
       content: "HG 1/144 Gundam Calibarn",
     },
     {
-      image: "https://ae01.alicdn.com/kf/Sa5c9f138c7ac4292bd149bba57923c71l.jpg",
+      image:
+        "https://ae01.alicdn.com/kf/Sa5c9f138c7ac4292bd149bba57923c71l.jpg",
       content: "SD Gundam Aerial EX-Standard Gunpla",
     },
     { image: "", content: "Box 7" },
@@ -40,23 +46,19 @@ const App = () => {
   const [hasMore, setHasMore] = useState(true);
   const [boxCounter, setBoxCounter] = useState(boxes.length);
 
-  // Handle search
   const handleSearch = () => {
     console.log(`Searching for: ${searchQuery}`);
   };
 
-  // Handle filter
   const handleFilter = () => {
     console.log("Filter button clicked");
   };
 
-  // Load more boxes when scrolling near the bottom of the page
   const loadMoreBoxes = () => {
     if (loading || !hasMore) return;
 
     setLoading(true);
     setTimeout(() => {
-      // Adding 4 boxes at a time
       const newBoxes = [
         {
           image: "https://via.placeholder.com/150",
