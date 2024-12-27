@@ -84,7 +84,7 @@ const App = () => {
 
       setBoxCounter((prevCounter) => prevCounter + 4);
 
-      if (boxes.length + 4 > 50) {
+      if (boxes.length + 8 > 75) {
         setHasMore(false);
       }
 
@@ -96,7 +96,7 @@ const App = () => {
     const scrollPosition = window.scrollY + window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
 
-    if (scrollPosition >= documentHeight - 100) {
+    if (scrollPosition >= documentHeight - 10) {
       loadMoreBoxes();
     }
   };
