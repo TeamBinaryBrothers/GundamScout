@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Box from "./Box";
+import { debounce } from "lodash";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -82,24 +83,29 @@ const App = () => {
         return [...prevBoxes, ...newBoxes];
       });
 
-      setBoxCounter((prevCounter) => prevCounter + 4);
+      setBoxCounter((prevCounter) => {
+        const updatedCounter = prevCounter + 4;
+        console.log(`Box counter: ${updatedCounter}`);
 
-      if (boxes.length + 8 > 75) {
-        setHasMore(false);
-      }
+        if (updatedCounter >= 116) {
+          setHasMore(false);
+        }
+
+        return updatedCounter;
+      });
 
       setLoading(false);
     }, 1000);
   };
 
-  const handleScroll = () => {
+  const handleScroll = debounce(() => {
     const scrollPosition = window.scrollY + window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
 
     if (scrollPosition >= documentHeight - 10) {
       loadMoreBoxes();
     }
-  };
+  }, 500);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
