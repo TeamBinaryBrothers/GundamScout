@@ -78,16 +78,48 @@ const App = () => {
             image: "https://via.placeholder.com/150",
             content: `Box ${prevBoxes.length + 4}`,
           },
+          {
+            image: "https://via.placeholder.com/150",
+            content: `Box ${prevBoxes.length + 5}`,
+          },
+          {
+            image: "https://via.placeholder.com/150",
+            content: `Box ${prevBoxes.length + 6}`,
+          },
+          {
+            image: "https://via.placeholder.com/150",
+            content: `Box ${prevBoxes.length + 7}`,
+          },
+          {
+            image: "https://via.placeholder.com/150",
+            content: `Box ${prevBoxes.length + 8}`,
+          },
+          {
+            image: "https://via.placeholder.com/150",
+            content: `Box ${prevBoxes.length + 9}`,
+          },
+          {
+            image: "https://via.placeholder.com/150",
+            content: `Box ${prevBoxes.length + 10}`,
+          },
+          {
+            image: "https://via.placeholder.com/150",
+            content: `Box ${prevBoxes.length + 11}`,
+          },
+          {
+            image: "https://via.placeholder.com/150",
+            content: `Box ${prevBoxes.length + 12}`,
+          },
         ];
 
         return [...prevBoxes, ...newBoxes];
       });
 
       setBoxCounter((prevCounter) => {
-        const updatedCounter = prevCounter + 4;
+        const updatedCounter = prevCounter + 12;
         console.log(`Box counter: ${updatedCounter}`);
 
-        if (updatedCounter >= 116) {
+        if (updatedCounter >= 120) {
           setHasMore(false);
         }
 
