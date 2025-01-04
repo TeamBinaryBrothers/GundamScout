@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Box from "./Box";
 import { debounce } from "lodash";
+
+const Wishlist = () => <div>Wishlist Page</div>;
+const Collection = () => <div>Collection Page</div>;
+const Login = () => <div>Login Page</div>;
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -36,12 +41,30 @@ const App = () => {
         "https://ae01.alicdn.com/kf/Sa5c9f138c7ac4292bd149bba57923c71l.jpg",
       content: "SD Gundam Aerial EX-Standard Gunpla",
     },
-    { image: "", content: "Box 7" },
-    { image: "", content: "Box 8" },
-    { image: "", content: "Box 9" },
-    { image: "", content: "Box 10" },
-    { image: "", content: "Box 11" },
-    { image: "", content: "Box 12" },
+    {
+      image: "https://via.placeholder.com/150",
+      content: "Box 7",
+    },
+    {
+      image: "https://via.placeholder.com/150",
+      content: "Box 8",
+    },
+    {
+      image: "https://via.placeholder.com/150",
+      content: "Box 9",
+    },
+    {
+      image: "https://via.placeholder.com/150",
+      content: "Box 10",
+    },
+    {
+      image: "https://via.placeholder.com/150",
+      content: "Box 11",
+    },
+    {
+      image: "https://via.placeholder.com/150",
+      content: "Box 12",
+    },
   ]);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
@@ -61,68 +84,17 @@ const App = () => {
     setLoading(true);
     setTimeout(() => {
       setBoxes((prevBoxes) => {
-        const newBoxes = [
-          {
-            image: "https://via.placeholder.com/150",
-            content: `Box ${prevBoxes.length + 1}`,
-          },
-          {
-            image: "https://via.placeholder.com/150",
-            content: `Box ${prevBoxes.length + 2}`,
-          },
-          {
-            image: "https://via.placeholder.com/150",
-            content: `Box ${prevBoxes.length + 3}`,
-          },
-          {
-            image: "https://via.placeholder.com/150",
-            content: `Box ${prevBoxes.length + 4}`,
-          },
-          {
-            image: "https://via.placeholder.com/150",
-            content: `Box ${prevBoxes.length + 5}`,
-          },
-          {
-            image: "https://via.placeholder.com/150",
-            content: `Box ${prevBoxes.length + 6}`,
-          },
-          {
-            image: "https://via.placeholder.com/150",
-            content: `Box ${prevBoxes.length + 7}`,
-          },
-          {
-            image: "https://via.placeholder.com/150",
-            content: `Box ${prevBoxes.length + 8}`,
-          },
-          {
-            image: "https://via.placeholder.com/150",
-            content: `Box ${prevBoxes.length + 9}`,
-          },
-          {
-            image: "https://via.placeholder.com/150",
-            content: `Box ${prevBoxes.length + 10}`,
-          },
-          {
-            image: "https://via.placeholder.com/150",
-            content: `Box ${prevBoxes.length + 11}`,
-          },
-          {
-            image: "https://via.placeholder.com/150",
-            content: `Box ${prevBoxes.length + 12}`,
-          },
-        ];
-
+        const newBoxes = Array.from({ length: 12 }, (_, i) => ({
+          image: "https://via.placeholder.com/150",
+          content: `Box ${prevBoxes.length + i + 1}`,
+        }));
         return [...prevBoxes, ...newBoxes];
       });
 
       setBoxCounter((prevCounter) => {
         const updatedCounter = prevCounter + 12;
         console.log(`Box counter: ${updatedCounter}`);
-
-        if (updatedCounter >= 120) {
-          setHasMore(false);
-        }
-
+        if (updatedCounter >= 120) setHasMore(false);
         return updatedCounter;
       });
 
@@ -148,15 +120,21 @@ const App = () => {
   }, [boxes, boxCounter]);
 
   return (
-    <>
+    <Router>
       <div className="filterButton">
         <button onClick={handleFilter}>Filter</button>
       </div>
 
       <div className="testButton">
-        <button>Wishlist</button>
-        <button>Collection</button>
-        <button>Login</button>
+        <Link to="/wishlist">
+          <button>Wishlist</button>
+        </Link>
+        <Link to="/collection">
+          <button>Collection</button>
+        </Link>
+        <Link to="/login">
+          <button>Login</button>
+        </Link>
       </div>
 
       <div className="searchBar">
@@ -169,13 +147,23 @@ const App = () => {
         <button onClick={handleSearch}>Search</button>
       </div>
 
-      <div className="grid">
-        {boxes.map((box, index) => (
-          <Box key={index} image={box.image} content={box.content} />
-        ))}
-        {loading && <div>Loading...</div>}
-      </div>
-    </>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="grid">
+              {boxes.map((box, index) => (
+                <Box key={index} image={box.image} content={box.content} />
+              ))}
+              {loading && <div>Loading...</div>}
+            </div>
+          }
+        />
+        <Route path="/Wishlist" element={<Wishlist />} />
+        <Route path="/Collection" element={<Collection />} />
+        <Route path="/Login" element={<Login />} />
+      </Routes>
+    </Router>
   );
 };
 
