@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Box from "./Box";
 import { debounce } from "lodash";
-
-const Wishlist = () => <div>Wishlist Page</div>;
-const Collection = () => <div>Collection Page</div>;
-const Login = () => <div>Login Page</div>;
+import Wishlist from "./Wishlist";
+import Collection from "./Collection";
+import Login from "./Login";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
