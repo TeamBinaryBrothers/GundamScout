@@ -4,10 +4,9 @@ import "./App.css";
 import Box from "./Box";
 import { debounce } from "lodash";
 import axios from "axios";
-
-const Wishlist = () => <div>Wishlist Page</div>;
-const Collection = () => <div>Collection Page</div>;
-const Login = () => <div>Login Page</div>;
+import Wishlist from "./Wishlist";
+import Collection from "./Collection";
+import Login from "./Login";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
