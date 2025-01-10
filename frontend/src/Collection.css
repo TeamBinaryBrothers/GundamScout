@@ -1,6 +1,6 @@
 .collection-button-container {
   position: absolute;
-  top: 20px;
+  top: 100px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
@@ -23,4 +23,16 @@
 
 .back-button button:hover {
   background-color: darkgray;
+}
+
+.collection-header {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin-top: 10px;
 }
