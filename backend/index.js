@@ -1,6 +1,7 @@
 const express = require("express");
-const app = express();
+const connectDB = require("./database.js");
 
+const app = express();
 // Needed to accept requests from frontend hosted on a different origin (address/port).
 const cors = require("cors");
 const corsOptions = {
@@ -8,6 +9,8 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+connectDB();
 
 // Sends initial gundam objects
 app.get("/gundams/init", (req, res) => {
