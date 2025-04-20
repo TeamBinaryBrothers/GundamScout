@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from "react-router-dom";
 import "./App.css";
 import Box from "./Box";
 import { debounce } from "lodash";
@@ -8,18 +14,23 @@ import Wishlist from "./Wishlist";
 import Collection from "./Collection";
 import Login from "./Login";
 
-const App = () => {
+const MainLayout = () => {
+  const location = useLocation();
+
   const [searchQuery, setSearchQuery] = useState("");
-  const [boxes, setBoxes] = useState( [] );
+  const [boxes, setBoxes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  const [boxCounter, setBoxCounter] = useState(boxes.length);
+  const [boxCounter, setBoxCounter] = useState(0);
 
   // Fetching API
-  const fetchAPI = async () => {
-    const response = await axios.get("http://localhost:8080/gundams/init");
-    setBoxes(response.data.gundams);
-  };
+  useEffect(() => {
+    const fetchAPI = async () => {
+      const response = await axios.get("http://localhost:8080/gundams/init");
+      setBoxes(response.data.gundams);
+    };
+    fetchAPI();
+  }, []);
 
   const handleSearch = () => {
     console.log(`Searching for: ${searchQuery}`);
@@ -62,19 +73,13 @@ const App = () => {
     }
   }, 500);
 
-  // Only run once to fetch initial boxes
-  useEffect(() => { fetchAPI(); }, []);
-
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [boxes, boxCounter]);
 
   return (
-    <Router>
+    <>
       <div className="filterButton">
         <button onClick={handleFilter}>Filter</button>
       </div>
@@ -91,15 +96,17 @@ const App = () => {
         </Link>
       </div>
 
-      <div className="searchBar">
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchQuery}
-          onChange={(event) => setSearchQuery(event.target.value)}
-        />
-        <button onClick={handleSearch}>Search</button>
-      </div>
+      {location.pathname === "/" && (
+        <div className="searchBar">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button onClick={handleSearch}>Search</button>
+        </div>
+      )}
 
       <Routes>
         <Route
@@ -117,6 +124,14 @@ const App = () => {
         <Route path="/Collection" element={<Collection />} />
         <Route path="/Login" element={<Login />} />
       </Routes>
+    </>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <MainLayout />
     </Router>
   );
 };
