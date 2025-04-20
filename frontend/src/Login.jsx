@@ -34,7 +34,7 @@ const Login = () => {
             type="password"
             placeholder="Enter your password"
             value={password}
-            nChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             className="password-input"
           />
           {errorMessage && <p className="error-message">{errorMessage}</p>}
