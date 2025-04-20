@@ -19,31 +19,34 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-form">
-        <input
-          type="text"
-          placeholder="Enter your username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          className="username-input"
-        />
-        <input
-          type="password"
-          placeholder="Enter your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="password-input"
-        />
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-        <button onClick={handleLogin} className="login-button">
-          Login
-        </button>
-      </div>
-      <div className="login-button-container">
-        <Link to="/" className="back-button">
-          <button>Back to Home Page</button>
-        </Link>
+    <div>
+      <h1 className="login-header">Login</h1>
+      <div className="login-container">
+        <div className="login-form">
+          <input
+            type="text"
+            placeholder="Enter your username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="username-input"
+          />
+          <input
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            nChange={(e) => setPassword(e.target.value)}
+            className="password-input"
+          />
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+          <button onClick={handleLogin} className="login-button">
+            Login
+          </button>
+        </div>
+        <div className="login-button-container">
+          <Link to="/" className="back-button">
+            <button>Back to Home Page</button>
+          </Link>
+        </div>
       </div>
     </div>
   );
