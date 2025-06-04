@@ -23,17 +23,30 @@ const MainLayout = () => {
   const [hasMore, setHasMore] = useState(true);
   const [boxCounter, setBoxCounter] = useState(0);
 
-  // Fetching API
+  // Fetching initial data
   useEffect(() => {
     const fetchAPI = async () => {
-      const response = await axios.get("http://localhost:8080/gundams/init");
-      setBoxes(response.data.gundams);
+      try {
+        const response = await axios.get("http://localhost:8080/gundams/init");
+        setBoxes(response.data.gundams);
+      } catch (err) {
+        console.error("Failed to load initial Gundam kits", err);
+      }
     };
     fetchAPI();
   }, []);
 
-  const handleSearch = () => {
-    console.log(`Searching for: ${searchQuery}`);
+  const handleSearch = async () => {
+    try {
+      console.log("🔍 Sending search query:", searchQuery);
+      const response = await axios.get("http://localhost:8080/gundams/search", {
+        params: { query: searchQuery },
+      });
+      console.log("✅ Search results:", response.data.gundams);
+      setBoxes(response.data.gundams);
+    } catch (error) {
+      console.error("❌ Search failed", error);
+    }
   };
 
   const handleFilter = () => {
